@@ -1,10 +1,8 @@
 package com.shoppingbasket.service;
-
 import com.shoppingbasket.basketproducts.BasketProduct;
 import com.shoppingbasket.invoice.ShoppingBasketInvoice;
 import com.shoppingbasket.repository.BasketProductRepository;
 import com.shoppingbasket.repository.BasketProductRepositoryImpl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

@@ -1,5 +1,4 @@
 package com.shoppingbasket.basketproducts;
-
 import com.shoppingbasket.specialoffers.Offer;
 
 public interface BasketProduct {

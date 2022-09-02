@@ -1,9 +1,5 @@
 package com.shoppingbasket.invoice;
-
 import lombok.Getter;
-
-import java.util.Currency;
-import java.util.Locale;
 @Getter
 public class ShoppingBasketInvoice {
 
