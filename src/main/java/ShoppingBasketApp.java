@@ -1,11 +1,11 @@
-import com.shoppingbasket.service.ShoppingBasketCart;
+import com.shoppingbasket.service.ShoppingBasket;
 import java.util.Arrays;
 
 public class ShoppingBasketApp {
 
     public static void main(String[] args) {
         String[] shoppingList = {"Apple", "Apple", "Orange", "Apple", "Pineapple", "Banana", "Orange", "Banana"};
-        ShoppingBasketCart shoppingCart = new ShoppingBasketCart();
+        ShoppingBasket shoppingCart = new ShoppingBasket();
         shoppingCart.addBasketItems(Arrays.asList(shoppingList));
         //Print out items in shopping basket
         System.out.println(shoppingCart);

@@ -1,21 +1,20 @@
 package com.shoppingbasket;
 import com.shoppingbasket.invoice.ShoppingBasketInvoice;
-import com.shoppingbasket.service.ShoppingBasketCart;
+import com.shoppingbasket.service.ShoppingBasket;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class ShoppingBasketAppTest {
 
-    public ShoppingBasketCart shoppingBasketCart;
+    public ShoppingBasket shoppingBasketCart;
     @Before
     public void setUp(){
-        shoppingBasketCart = new ShoppingBasketCart();
+        shoppingBasketCart = new ShoppingBasket();
     }
 
     @Test
