@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class ShoppingBasketService {
+public class ShoppingBasketCart {
     private final BasketProductRepository BASKET_PRODUCT_REPOSITORY = new BasketProductRepositoryImpl();
     private List<String> basketItems = new ArrayList<>();
 
