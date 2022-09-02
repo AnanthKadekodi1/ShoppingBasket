@@ -30,10 +30,23 @@ public class ShoppingBasketService {
     //}
 
     public ShoppingBasketInvoice calculateTotalBasketCost() {
+        validateBasketItems(basketItems);
+
+        Map<BasketProduct, Integer> groupedBasketItems = groupBasketItems(basketItems);
+
+        int totalBasketCost = totalBasketCost(groupedBasketItems);
+
+        return new ShoppingBasketInvoice(totalBasketCost);
+    }
+
+    private void validateBasketItems(List<String> basketItems){
         if (basketItems == null)
             throw new IllegalArgumentException("Items parameter was null");
+    }
 
-        Map<BasketProduct, Integer> basketGrouping = basketItems.stream()
+    private Map<BasketProduct, Integer> groupBasketItems(List<String> basketItems)
+    {
+        return basketItems.stream()
                 .map(String::trim)
                 .map(String::toUpperCase)
                 .filter(item -> item.length() > 0)
@@ -46,12 +59,15 @@ public class ShoppingBasketService {
                 .collect(Collectors.groupingBy(Function.identity(),
                         Collectors.summingInt(x -> 1)));
 
-        int totalBasketCost = basketGrouping.entrySet()
+    }
+
+    private int totalBasketCost(Map<BasketProduct, Integer> groupedBasketItems){
+        return groupedBasketItems.entrySet()
                 .stream()
                 .map(entry -> entry.getKey().calculateProductPrice(entry.getValue()))
                 .mapToInt(Integer::intValue)
                 .sum();
-
-        return new ShoppingBasketInvoice(totalBasketCost);
     }
+
+
 }

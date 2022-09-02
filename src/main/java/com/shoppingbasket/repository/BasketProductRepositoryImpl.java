@@ -34,8 +34,6 @@ public class BasketProductRepositoryImpl implements BasketProductRepository {
                                                                             .stream()
                                                                             .map(BasketProduct::getName)
                                                                             .collect(Collectors.toList());
-    @Override
-    public List<String> getBasketProductNames() { return BASKET_PRODUCT_NAMES; }
 
     @Override
     public BasketProduct getBasketProduct(String item) {
