@@ -13,7 +13,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ShoppingBasketService {
-
     private final BasketProductRepository BASKET_PRODUCT_REPOSITORY = new BasketProductRepositoryImpl();
     private List<String> basketItems = new ArrayList<>();
 
@@ -24,10 +23,9 @@ public class ShoppingBasketService {
         this.basketItems.addAll(basketItems);
     }
 
-
-    //public String toString() {
-    //    return "Shopping Basket contains " + basketItems;
-    //}
+    public String toString() {
+        return "The Shopping Basket contains the following items - " + basketItems.stream().map(i -> i.toString()).collect(Collectors.joining(","));
+    }
 
     public ShoppingBasketInvoice calculateTotalBasketCost() {
         validateBasketItems(basketItems);
@@ -41,7 +39,7 @@ public class ShoppingBasketService {
 
     private void validateBasketItems(List<String> basketItems){
         if (basketItems == null)
-            throw new IllegalArgumentException("Items parameter was null");
+            throw new IllegalArgumentException("Null items present");
     }
 
     private Map<BasketProduct, Integer> groupBasketItems(List<String> basketItems)
@@ -51,8 +49,8 @@ public class ShoppingBasketService {
                 .map(String::toUpperCase)
                 .filter(item -> item.length() > 0)
                 .peek(basketItem -> {
-                    if (!BASKET_PRODUCT_REPOSITORY.validBasketProduct(basketItem))
-                        System.out.println("Invalid item " + basketItem + " found, will be ignored!");
+                    if (!BASKET_PRODUCT_REPOSITORY.isBasketProductValid(basketItem))
+                        System.out.println("Invalid item " + basketItem + " found");
                 })
                 .map(BASKET_PRODUCT_REPOSITORY::getBasketProduct)
                 .filter(Objects::nonNull)
@@ -68,6 +66,4 @@ public class ShoppingBasketService {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
-
-
 }

@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class BasketProductRepositoryImpl implements BasketProductRepository {
-
     private static final Map<String, BasketProduct> BASKET_PRODUCTS = populateBasketProducts();
 
     private static Map<String, BasketProduct> populateBasketProducts() {
@@ -41,7 +40,7 @@ public class BasketProductRepositoryImpl implements BasketProductRepository {
     }
 
     @Override
-    public boolean validBasketProduct(String item) {
+    public boolean isBasketProductValid(String item) {
         return BASKET_PRODUCT_NAMES.contains(item);
     }
 }

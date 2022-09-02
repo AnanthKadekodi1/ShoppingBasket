@@ -12,13 +12,13 @@ public class ShoppingBasketInvoice {
 
     public ShoppingBasketInvoice(int total) {
         if (total < 0)
-            throw new IllegalArgumentException("Total cannot be negative");
+            throw new IllegalArgumentException("Total cost cannot be negative");
         totalInCents = total;
         dollar = total / 100;
         cents = total % 100;
     }
 
     public String toString() {
-        return String.format("Cost %s%,d.%02d", invoiceCurrencySymbol, dollar, cents);
+        return String.format("Total cost of shopping basket: %s%,d.%02d", invoiceCurrencySymbol, dollar, cents);
     }
 }
