@@ -29,7 +29,7 @@ public class ShoppingBasketService {
     //    return "Shopping Basket contains " + basketItems;
     //}
 
-    public ShoppingBasketInvoice pay() {
+    public ShoppingBasketInvoice calculateTotalBasketCost() {
         if (basketItems == null)
             throw new IllegalArgumentException("Items parameter was null");
 
@@ -46,12 +46,12 @@ public class ShoppingBasketService {
                 .collect(Collectors.groupingBy(Function.identity(),
                         Collectors.summingInt(x -> 1)));
 
-        int totalCost = basketGrouping.entrySet()
+        int totalBasketCost = basketGrouping.entrySet()
                 .stream()
                 .map(entry -> entry.getKey().calculateProductPrice(entry.getValue()))
                 .mapToInt(Integer::intValue)
                 .sum();
 
-        return new ShoppingBasketInvoice(totalCost);
+        return new ShoppingBasketInvoice(totalBasketCost);
     }
 }
