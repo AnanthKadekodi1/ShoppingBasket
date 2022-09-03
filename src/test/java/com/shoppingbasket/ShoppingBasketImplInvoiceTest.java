@@ -4,7 +4,7 @@ import com.shoppingbasket.invoice.ShoppingBasketInvoice;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ShoppingBasketInvoiceTest {
+public class ShoppingBasketImplInvoiceTest {
 
     @Test
     public void returnZeroWhenTotalIsZero() {
