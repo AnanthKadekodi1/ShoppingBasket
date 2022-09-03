@@ -128,4 +128,12 @@ public class ShoppingBasketAppTest {
         Assert.assertEquals(shoppingBasketInvoice.toString(), shoppingBasketCart.calculateTotalBasketCost().toString());
     }
 
+    @Test
+    public void validateExampleShoppingBasketScenario() {
+        List<String> fruits = Arrays.asList("Apple", "Apple", "Orange", "Apple", "Pineapple", "Banana", "Orange", "Banana");
+        shoppingBasketCart.addBasketItems(fruits);
+        ShoppingBasketInvoice shoppingBasketInvoice = new ShoppingBasketInvoice(285);
+        Assert.assertEquals(shoppingBasketInvoice.toString(), shoppingBasketCart.calculateTotalBasketCost().toString());
+    }
+
 }

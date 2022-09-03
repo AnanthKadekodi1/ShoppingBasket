@@ -9,11 +9,17 @@ public class ShoppingBasketInvoice {
     private int totalPence;
 
     public ShoppingBasketInvoice(int total) {
-        if (total < 0)
+        if (total < 0) {
             throw new IllegalArgumentException("Total cost cannot be negative");
-        totalPence = total;
-        pound = total / 100;
-        pence = total % 100;
+        }
+
+        try{
+            totalPence = total;
+            pound = total / 100;
+            pence = total % 100;
+        }catch (Exception ex) {
+            System.out.println("Error calculating shopping basket invoice values = " + ex.getMessage());
+        }
     }
 
     public String toString() {

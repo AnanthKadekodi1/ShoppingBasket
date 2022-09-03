@@ -3,6 +3,7 @@ import com.shoppingbasket.basketproducts.BasketProduct;
 import com.shoppingbasket.invoice.ShoppingBasketInvoice;
 import com.shoppingbasket.repository.BasketProductRepository;
 import com.shoppingbasket.repository.BasketProductRepositoryImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,8 @@ import java.util.stream.Collectors;
 public class ShoppingBasket {
     private final BasketProductRepository BASKET_PRODUCT_REPOSITORY = new BasketProductRepositoryImpl();
     private List<String> basketItems = new ArrayList<>();
+    Map<BasketProduct, Integer> groupedBasketItems;
+    int totalBasketCost;
 
     public void addBasketItems(final List<String> basketItems) {
         if (basketItems == null) {
@@ -28,9 +31,17 @@ public class ShoppingBasket {
     public ShoppingBasketInvoice calculateTotalBasketCost() {
         validateBasketItems(basketItems);
 
-        Map<BasketProduct, Integer> groupedBasketItems = groupBasketItems(basketItems);
+        try {
+            groupedBasketItems = groupBasketItems(basketItems);
+        } catch (Exception ex) {
+            System.out.println("Error grouping basket items - " + ex.getMessage());
+        }
 
-        int totalBasketCost = totalBasketCost(groupedBasketItems);
+        try {
+            totalBasketCost = totalBasketCost(groupedBasketItems);
+        } catch (Exception ex) {
+            System.out.println("Error calculating total basket cost = " + ex.getMessage());
+        }
 
         return new ShoppingBasketInvoice(totalBasketCost);
     }
