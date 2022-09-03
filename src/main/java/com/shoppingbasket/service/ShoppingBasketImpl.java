@@ -1,6 +1,6 @@
 package com.shoppingbasket.service;
 import com.shoppingbasket.basketproducts.BasketProduct;
-import com.shoppingbasket.invoice.ShoppingBasketInvoice;
+import com.shoppingbasket.invoice.ShoppingBasketInvoiceImpl;
 import com.shoppingbasket.repository.BasketProductRepository;
 import com.shoppingbasket.repository.BasketProductRepositoryImpl;
 
@@ -31,7 +31,7 @@ public class ShoppingBasketImpl implements ShoppingBasket {
     }
 
     @Override
-    public ShoppingBasketInvoice calculateTotalBasketCost() {
+    public ShoppingBasketInvoiceImpl calculateTotalBasketCost() {
         validateBasketItems(basketItems);
 
         try {
@@ -46,7 +46,7 @@ public class ShoppingBasketImpl implements ShoppingBasket {
             System.out.println("Error calculating total basket cost = " + ex.getMessage());
         }
 
-        return new ShoppingBasketInvoice(totalBasketCost);
+        return new ShoppingBasketInvoiceImpl(totalBasketCost);
     }
 
     @Override

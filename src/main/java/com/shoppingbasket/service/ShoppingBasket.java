@@ -1,7 +1,7 @@
 package com.shoppingbasket.service;
 
 import com.shoppingbasket.basketproducts.BasketProduct;
-import com.shoppingbasket.invoice.ShoppingBasketInvoice;
+import com.shoppingbasket.invoice.ShoppingBasketInvoiceImpl;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ public interface ShoppingBasket {
 
     String toString();
 
-    ShoppingBasketInvoice calculateTotalBasketCost();
+    ShoppingBasketInvoiceImpl calculateTotalBasketCost();
 
     void validateBasketItems(List<String> basketItems);
 
