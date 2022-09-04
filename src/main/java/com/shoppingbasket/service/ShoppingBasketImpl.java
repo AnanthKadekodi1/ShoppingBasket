@@ -3,6 +3,7 @@ import com.shoppingbasket.basketproducts.BasketProduct;
 import com.shoppingbasket.invoice.ShoppingBasketInvoiceImpl;
 import com.shoppingbasket.repository.BasketProductRepository;
 import com.shoppingbasket.repository.BasketProductRepositoryImpl;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Component
 public class ShoppingBasketImpl implements ShoppingBasket {
     private final BasketProductRepository BASKET_PRODUCT_REPOSITORY = new BasketProductRepositoryImpl();
     private List<String> basketItems = new ArrayList<>();
