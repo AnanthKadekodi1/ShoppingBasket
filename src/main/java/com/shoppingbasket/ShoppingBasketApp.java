@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ShoppingBasketApp {
 
     public static void main(String[] args) {
-        //Sample Ecample input that can be modified.
+        //Sample Example input that can be modified.
         String[] shoppingList = {"Apple", "Apple", "Orange", "Apple", "Pineapple", "Banana", "Orange", "Banana"};
 
         ConfigurableApplicationContext context = SpringApplication.run(ShoppingBasketApp.class, args);
@@ -22,5 +22,7 @@ public class ShoppingBasketApp {
 
         //Print out total basket cost
         System.out.println(shoppingBasket.calculateTotalBasketCost());
+
+        context.close();
     }
 }
