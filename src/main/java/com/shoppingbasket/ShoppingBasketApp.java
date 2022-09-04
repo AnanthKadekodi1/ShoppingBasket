@@ -10,7 +10,9 @@ import java.util.Arrays;
 public class ShoppingBasketApp {
 
     public static void main(String[] args) {
+        //Sample Ecample input that can be modified.
         String[] shoppingList = {"Apple", "Apple", "Orange", "Apple", "Pineapple", "Banana", "Orange", "Banana"};
+
         ConfigurableApplicationContext context = SpringApplication.run(ShoppingBasketApp.class, args);
         ShoppingBasketImpl shoppingBasket = context.getBean(ShoppingBasketImpl.class);
         shoppingBasket.addBasketItems(Arrays.asList(shoppingList));

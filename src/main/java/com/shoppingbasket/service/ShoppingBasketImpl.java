@@ -66,7 +66,7 @@ public class ShoppingBasketImpl implements ShoppingBasket {
                 .filter(item -> item.length() > 0)
                 .peek(basketItem -> {
                     if (!BASKET_PRODUCT_REPOSITORY.isBasketProductValid(basketItem))
-                        System.out.println("Invalid item " + basketItem + " found");
+                        System.out.println("Invalid item - " + basketItem + " found");
                 })
                 .map(BASKET_PRODUCT_REPOSITORY::getBasketProduct)
                 .filter(Objects::nonNull)
